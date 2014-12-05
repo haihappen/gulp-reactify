@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var path = require('path');
 var through2 = require('through2');
@@ -13,6 +13,9 @@ module.exports = function (options) {
   }
 
   function compile(file, enc, callback) {
+    if (file.isNull()) return callback(null, file);
+    if (file.isStream()) return callback(new Error('Streams are not supported!'));
+
     var isJSXFile = path.extname(file.path) === '.jsx';
     var data = file.contents.toString(enc);
     if (!isJSXFile) {
