@@ -17,6 +17,9 @@ module.exports = function (options) {
     if (file.isStream()) return callback(new Error('Streams are not supported!'));
 
     var isJSXFile = path.extname(file.path) === '.jsx';
+    if (isJSXFile) {
+      file.path = file.path.replace(/\.jsx$/, '.js');
+    }
     var data = file.contents.toString(enc);
     if (!isJSXFile) {
       isJSXFile = /\/\*\*(\s)@jsx/.test(data.split('\n')[0]);
@@ -37,7 +40,8 @@ module.exports = function (options) {
       this.push(file);
       callback();
       return;
-    };
+    }
+    ;
   }
 
   return through2.obj(compile);

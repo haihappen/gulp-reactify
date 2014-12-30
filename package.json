@@ -1,7 +1,7 @@
 {
   "name": "gulp-reactify",
   "author": "yiminghe@gmail.com",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "plugin for gulp to transform react jsx file",
   "homepage": "http://github.com/yiminghe/gulp-reactify",
   "repository": {
