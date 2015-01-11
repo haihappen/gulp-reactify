@@ -20,6 +20,9 @@ module.exports = function (options) {
     if (isJSXFile) {
       file.path = file.path.replace(/\.jsx$/, '.js');
     }
+    if(!isJSXFile) {
+      isJSXFile = /\.react\.js/.test(file.path);
+    }
     var data = file.contents.toString(enc);
     if (!isJSXFile) {
       isJSXFile = /\/\*\*(\s)@jsx/.test(data.split('\n')[0]);
